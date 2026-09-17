@@ -78,7 +78,7 @@
             <div class="detail-row">
               <div class="detail-title">地點</div>
               <div class="detail-content">
-                觀塘翠屏道3號<br>基督教家庭服務中心 一樓禮堂
+                觀塘翠屏道3號<br>基督教家庭服務中心 <span id="tHallLocation">一樓禮堂</span>
                 <span class="sub-text">(港鐵觀塘站 D1 出口，步行約3分鐘)</span>
               </div>
             </div>
@@ -110,6 +110,8 @@
       document.getElementById('tName').innerText = name;
       document.getElementById('tSeat').innerText = seat;
       document.getElementById('tFloor').innerText = floor;
+      // 同步更新地點顯示為「一樓禮堂」或「二樓禮堂」
+      document.getElementById('tHallLocation').innerText = floor + '禮堂';
     </script>
   </body>
 </html>
