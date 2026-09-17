@@ -94,9 +94,22 @@
     <script>
       // 自動從網址參數讀取資料
       const params = new URLSearchParams(window.location.search);
-      document.getElementById('tName').innerText = params.get('name') || '參加者';
-      document.getElementById('tSeat').innerText = params.get('seat') || '未分配';
-      document.getElementById('tFloor').innerText = params.get('floor') || '一樓';
+      const name = params.get('name') || '參加者';
+      const seat = params.get('seat') || '未分配';
+      
+      // 判斷樓層邏輯：如果座位包含 M, N, P, Q 則顯示二樓，其餘顯示一樓
+      let floor = params.get('floor');
+      if (!floor || floor === '一樓') {
+        if (/^[MNPQ]/i.test(seat.trim())) {
+          floor = '二樓';
+        } else {
+          floor = '一樓';
+        }
+      }
+
+      document.getElementById('tName').innerText = name;
+      document.getElementById('tSeat').innerText = seat;
+      document.getElementById('tFloor').innerText = floor;
     </script>
   </body>
 </html>
